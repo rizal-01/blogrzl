@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminUsersController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -19,12 +21,7 @@ use App\Http\Controllers\ProdukController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home",
-        "active" => "home",
-    ]);
-});
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about', [
@@ -62,3 +59,6 @@ Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'check
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
 Route::resource('/dashboard/produk', ProdukController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/users', AdminUsersController::class)->except('show')->middleware('admin');

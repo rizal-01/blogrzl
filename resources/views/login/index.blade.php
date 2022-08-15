@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('blog.main')
 
 @section('content')
 <div class="row justify-content-center">
@@ -11,13 +11,13 @@
       @endif
 
       @if (session()->has('loginError'))
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show"  role="alert">
         {{ session('loginError') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
         <main class="form-signin w-100 m-auto">
-            <h1 class="h3 mb-3 fw-normal text-center">Please Login</h1>
+            <h1 class="h3 my-3 fw-normal text-center">Please Login</h1>
             <form action="/login" method="POST">
               @csrf
               <div class="form-floating">
@@ -35,7 +35,7 @@
               </div>
               <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
             </form>
-            <small class="d-block text-center mt-3">Not Registered ? <a href="/register" class="text-decoration-none">Register Now!</a></small>
+            <small class="d-block text-center my-3">Not Registered ? <a href="/register" class="text-decoration-none">Register Now!</a></small>
           </main>
     </div>
 </div>
